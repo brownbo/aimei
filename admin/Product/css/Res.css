@@ -1,0 +1,108 @@
+#resList div{
+}
+#resList td{
+	vertical-align: middle;
+}
+#ProList td{
+	vertical-align: middle;
+}
+.fl{
+	float: left;
+}
+.fr{
+	float: right;
+}
+.protypeSelect{
+	padding:0px 5px 0px 10px;
+}
+.sel{
+	height: 34px;
+	margin-right: 5px;
+}
+.select_width{
+	width:155px;
+	
+}
+.ProDiv{
+	width:80px;
+	overflow-x: hidden;
+	white-space:nowrap;
+}
+.ProDiv:hover{
+	height:40px;
+	overflow-x: scroll;
+}
+.ScDiv{
+	width:120px;
+	overflow-x: hidden;
+	white-space:nowrap;
+}
+.ScDiv:hover{
+	height:40px;
+	overflow-x: scroll;
+}
+.IDDiv{
+	width:80px;
+	overflow-x: hidden;
+	white-space:nowrap;
+}
+.IDDiv:hover{
+	height:40px;
+	overflow-x: scroll;
+}	
+.DesDiv{
+	width:110px;
+	height:40px;
+	overflow-y: scroll;
+}
+.AddDiv{
+	width:100px;
+	overflow-x: hidden;
+	white-space:nowrap;
+}
+.AddDiv:hover{
+	height:40px;
+	overflow-x: scroll;
+}
+.NameDiv{
+	width:90px;
+	overflow-x: hidden;
+	white-space:nowrap;
+}
+.NameDiv:hover{
+	height:40px;
+	overflow-x: scroll;
+}
+
+.RouteDiv{
+	width:90px;
+	overflow-x: hidden;
+	white-space:nowrap;
+}
+.RouteDiv:hover{
+	height:40px;
+	overflow-x: scroll;
+}
+.ProID{
+	height: 34px;
+	margin-left: 20px;
+	margin-right: 5px;
+}
+.storeInput {
+    height: 34px;
+    margin-right: 5px;
+}
+.center{
+	text-align: center;
+	display: none;
+}
+.onsell{
+		
+}
+.offsell{
+	color: #838080;
+	background-color: #EDEDED;
+}
+.redColor{
+	color: #e16565;
+}

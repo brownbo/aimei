@@ -1,0 +1,167 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="favicon.ico">
+    <title>编辑产品</title>
+    <!-- Bootstrap core CSS -->
+    <!-- Custom styles for this template -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/dashboard.css" rel="stylesheet">
+      <link href="../public/css/main.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/DateTimePicker.css" />
+    <script src="js/jquery-1.11.1.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript" src="js/DateTimePicker.js"></script>
+  <script src="https://cdn1.lncld.net/static/js/av-mini-0.6.1.js"></script>
+  <script src="../public/js/leancloud.js"></script>
+  <script src="js/ProEdit.js"></script>
+	<script type="text/javascript">
+		
+		
+		
+		$("input[name='unitPrice']").change(function() {
+		var text = $(this).val();
+		$("input[name='n']").val(text);
+		});
+	</script>
+  <script src="../public/js/main.js"></script>
+    
+    <!-- Just for debugging purposes. Don't actually copy this line! -->
+    <!--[if lt IE 9]>
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+     <![endif]-->
+  </head>
+<body>
+<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Stare Crate</a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#">Dashboard</a></li>
+                <li><a href="#">Settings</a></li>
+                <li><a href="#">Profile</a></li>
+                <li><a href="#">Help</a></li>
+            </ul>
+            <form class="navbar-form navbar-right">
+                <input type="text" class="form-control" placeholder="Search...">
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+            <ul class="nav nav-sidebar">
+                <li class="active"><a href="index.html">餐厅管理</a></li>
+              	<li class="active"><a href="product.html">产品管理</a></li>
+            </ul>
+
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            <h2 class="sub-header">编辑产品</h2>
+					<table  class="table table-striped">
+            	<tr>
+            	  <th>产品名称</th><td><input id="productName" type="text" style="width: 155px;"></td>
+            	  <th>产品ID(如：口红-KH)</th><td><input id="productID" type="text" style="width: 155px;"></td>
+            	</tr>           	
+                <tr>
+                    <th>产品类别(父级)</th>
+                    <td>
+                    <select onchange="changeOption(this)" name="productType"  id="productTypeParent" style="width: 155px;">
+                    </select>
+                    </td>
+
+                    <th>产品类别</th>
+                    <td>
+                        <select name="productType"  id="productType" style="width: 155px;">
+                        </select>
+                    </td>
+
+                </tr>
+                <tr>
+                	<th>计量单位(盒/套/支)</th><td><input type="text" name="unitString" id="unitString" style="width: 155px;"></td>
+                  <th>单位单价(元)</th><td><input id="unitPrice" name="unitPrice" style="width: 155px;" type="text"></td>
+                </tr>
+               <!-- <tr>
+                  <th>每包装含单位数量</th><td><input id="unitPerPackage" type="text" style="width: 155px;"></td>
+                  <th>包装规格名称(箱、袋、包)</th>
+                  <td>
+                  	<input type="text" id="packageString" style="width: 155px;"><span id="pack" ></span>
+                  </td>
+                </tr>-->
+                <!--<tr>
+                  <th>所属城市</th>
+                    <td>
+                    <select name="city" style="width: 155px;" id="city">
+                    </select>                   	
+                    </td>
+                  <th>分拣中心</th>
+                    <td>
+                    <select name="sortingCenter" style="width: 155px;" id="sortingCenter">
+                    </select>                   	
+                    </td>
+                </tr>-->
+                <!--<tr>
+                    <th>产品价格(元)</th><td><input id="productPrice" type="text"style="width:155px;background-color:#C0C0C0" readonly="true" ></td>
+                    <th>所属业态</th>
+                    <td id="stoTypeTD">
+                        <input type="radio" name="storeType" value="0">综合
+                        <input type="radio" name="storeType" value="1">餐厅
+                        <input type="radio" name="storeType" value="2">超市
+
+                    </td>-->
+                	<div id="dtBox"></div>
+							<!--	</tr>-->
+								<tr>
+									<th>产品图片</th>
+									<td>
+									<div><img id="ImgPr" width="155" height="125" /></div>
+									<input id="productImg" type="file">
+									</td>
+                  <th>产品描述</th>
+                  <td>
+                  <textarea id="ProductDescription"  rows="4" cols="22"></textarea>
+                  </td>
+                </tr>
+               	<tr>
+                	<th>所属销售状态</th>
+                	<td>
+                		<input type="radio" name="onsell"  value="true" />在售
+										<input type="radio" name="onsell"  value="false" />下架
+                	</td>
+                    <th>产品编号(排序用,选填)</th><td ><input id="orderNumber" type="text" style="width: 155px;"></td>
+
+                    <!--<th>是否独立包装</th>
+                    <td>
+                                        <input type="radio" name="isIndividualPackage"  value="false"/>否
+                                        <input type="radio" name="isIndividualPackage"  value="true" />是
+                    </td>-->
+                </tr>
+            </table> 
+            <input  id="subButton" type="button" class="btn btn-primary" value="提交" onclick="ProEdit()">
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+
+</body>
+</html>

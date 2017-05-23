@@ -1,0 +1,6 @@
+.shopChart{
+    position: absolute;left: 0;width: 80px;height: 30px;line-height: 30px; text-align: center; background-color: rgb(4,191,234);border-radius: 2px;
+}
+.collection{
+    position: absolute;right: 0;width: 50px;height: 30px;line-height: 30px;text-align: center;background-color:rgb(238,238,238);border-radius: 2px;
+}

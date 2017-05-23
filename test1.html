@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="test/jquery-1.11.0.js"></script>
+    <script src="test/browser.js"></script>
+    <script src="test/plupload.full.min.js"></script>
+    <script>
+        function go1(){
+           var TempParams='%7B%221%22:%5B%7B%225%22:%221%22%7D%5D,%224%22:%5B%7B%229%22:%22222%22%7D%5D%7D';
+            var url ='http://www.safe.iaicn.com:8089/ProblemReportService/ProblemReportServiceWrite.svc/SetAddProblemReportInfo';
+            var str = '{"models":{"CompanyId":"12","Memo":"52288","Check_ManId":"wangxianping","TargetId":"72","FinishTime":"2016-04-22 14:53:07","TaskId":"19","TempParam": "%5Bobject%20Object%5D"}}';
+            var mydata1='%7B%229b167ee8-cbc4-4883-9da5-cd7c8c0c19371461302517.jpg%22:%22D%253a%255cWebSites%255cRuHuWCF%255cUpload%255c9b167ee8-cbc4-4883-9da5-cd7c8c0c19371461302517.jpg%22%7D';
+            //    http://www.safe.iaicn.com:8089/TaskCacheService/TaskCacheServiceRead.svc
+            getPost(str,url,'post',function(msg){
+                var obj=strToJson(msg.responseText);
+                var object0=strToJson(obj);
+                alert(obj);
+                if(object0.Flag==true)
+                {
+                    /* 	plus.storage.setItem('dutyDetail'+taskId,obj);
+                     bindHeader(object0);*/
+
+                }
+                else
+                {
+                   alert(2)
+                }
+
+            },mydata1);
+        }
+        function getPost(astr,aurl,type,callback,extras) {
+           // alert(aurl);
+            $(function () {
+
+                var str = astr;
+                var url = aurl;
+                if(extras!=null)
+                {
+                    var mydata1 = extras;
+                }
+                //alert(mydata1)
+                //这里是接口验证你以后写AJAX必须复制下面的到你ajax代码前面
+                var credentials = {
+                    id: 'dh37fgj492je', // Required by Hawk.client.header
+                    key : 'werdhqb98rpaxn39848xrunpaw3489ruxnpa98w4rxn',
+                    algorithm: 'md5',
+                    user: 'Steve'
+                };
+                var req = {
+                    method: type,
+                    url: url,
+                    host: 'http://www.safe.iaicn.com:8089',
+                    port: 10834,
+                    data: str
+                };
+                var credentialsFunc = function (id, callback) {
+                    return callback(null, credentials);
+                };
+                var header = hawk.client.header(url, req.method, { credentials: credentials });
+                $.ajaxSetup({
+                    headers: { authorization: header.field }
+                })
+                $.ajax({
+                    type: req.method,
+                    contentType: "application/json",
+                    url: req.url,
+                    data: req.data,
+                    cache: false,
+                    beforeSend: LoadFunction, //加载执行方法
+                    error: erryFunction,  //错误执行方法
+                    success: succFunction //成功执行方法
+
+                });
+                function LoadFunction(request) {
+                    if(extras!=null)
+                    {
+                      //  alert(mydata1);
+                        request.setRequestHeader("jsonPar",mydata1);
+                    }
+
+                }
+                function succFunction (error, response, msg) {
+                    //  alert(1);
+                    callback(msg);
+                }
+                function erryFunction(obj){
+                   /* alert("错误！");
+                    console.log(obj[0]);*/
+                }
+            });
+
+        }
+        function strToJson(str) {
+            var json = eval('(' + str + ')');
+            //return json;
+            return JSON.parse(str);
+        }
+        function aaaa(){
+            var str='{"offTargetId":"72","companyId":"12","offTaskId":"19","rectContent":"hhhhh","mydata1":{"目标照片1":"D盘","目标照片2":"D盘"}}';
+            var obj=strToJson(str);
+            alert(obj);
+        }
+        function strs(){
+            var str='--------8Lm2OpContent-Disposition: form-data; name="uploadkey1"; filename="1459932334969.jpg"Content-Type: image/jpeg';
+            alert(str.length);
+        }
+
+    </script>
+</head>
+<body>
+    <input type="button" onclick="go1()" value="111">
+</body>
+</html>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        function App(){};
+        App.prototype.dealImage = function(path, obj, callback) {    var img = new Image();    img.src = path;
+            img.onload = function() {
+                var that = this;
+                var w = that.width,h = that.height,scale = w / h;
+                w = obj.width || w;
+                h = obj.height || (w / scale);
+                var quality = 0.7;
+                var canvas = document.createElement('canvas');
+                var ctx = canvas.getContext('2d');
+                var anw = document.createAttribute("width");
+                anw.nodeValue = w;
+                var anh = document.createAttribute("height");
+                anh.nodeValue = h;
+                canvas.setAttributeNode(anw);
+                canvas.setAttributeNode(anh);
+                ctx.drawImage(that, 0, 0, w, h);
+                if (obj.quality && obj.quality <= 1 && obj.quality > 0)
+                {
+                    quality = obj.quality;
+                }// quality值越小，所绘制出的图像越模糊
+                var base64 = canvas.toDataURL('image/jpeg', quality);        // 回调函数返回base64的值
+                        callback(base64);
+            }};
+        App.prototype.delPhotoMsg = function (delobj, cb){
+            var camera = plus.camera.getCamera();
+            var res = camera.supportedImageResolutions[0];
+            var fmt = camera.supportedImageFormats[0];
+            var _this = this;    var fileObj = {
+                origin : {},        now : {}    };         // 回调对象接口    // 获取摄像头进行拍照
+                 camera.captureImage(function(path) {
+                     plus.io.requestFileSystem(plus.io.PRIVATE_WWW, function(fs){
+                         fs.root.getFile(path, {create: true}, function(fileEntry){
+                             fileEntry.file(function(file){
+                                 console.log("原始文件大小：" + file.size / 1024 +"KB   filename:"+file.name);
+                                 origin(file.size, file.name);
+                             })
+                         })
+                     });
+
+
+                     function origin(filesize, filename){            // 移动端图片压缩处理
+                               plus.io.resolveLocalFileSystemURL(path, function(entry) {
+                                   var local = entry.toLocalURL();        // 获取本地地址                // 图片压缩处理
+                                    _this.dealImage(local, delobj, function(base) {
+                                        fileObj.now.base64Char = base;
+                                        fileObj.now.base64Length = base.length;
+                                        fileObj.now.fileSize = (base.length / 1024).toFixed(2) + "KB";
+                                        fileObj.origin.fileSize = (filesize / 1024).toFixed(2) + "KB";
+                                        fileObj.origin.filePath = local;
+                                        fileObj.fileName = filename;
+                                        cb(fileObj);
+                                    })
+                               })
+                     }
+                 }, function(err) {
+                     console.log("获取相片错误：" + err.message);
+                 }, {
+                     resolution: res,
+                     format: fmt
+                 })};
+        App.prototype.delGalleryImg = function (del, options, callback){
+            var _this = this;
+            var fileObj = {
+                now : {},
+                origin : {}
+            }
+            plus.gallery.pick(function(eve){
+                if(options.multiple){
+                    delmultiple(eve);        // 多张照片处理回调函数
+                      }
+                else {
+                    delsingle(eve);        // 单张图片处理回调函数
+                       }
+                    },
+                    function(err){
+                        console.log(err.message)
+                    }, {
+                        filter : options.filter || "image",
+                        multiple : options.multiple || false    })        // 处理多张图片
+                         function delmultiple(eve){
+                             for(var i = 0, len = eve.files.length; i < len; i++){
+                                 console.log(i +" : "+ eve.files[i])
+                                 (function(i, len){
+                                 retValue(eve.files[i], function(filepro){
+                                     console.log(JSON.stringify(filepro));
+                                 }
+                                     inner(i, len, filepro);
+                                 })
+                             })(i, len)
+                         }                var cbobj = [];            // 暂存json字符串话的字符数组
+                              function inner(index, len, result){
+                                  console.log(index +"  "+ JSON.stringify(result));
+                              }            cbobj.push(JSON.stringify(result));                    // 此处如果直接将对象push到数值中，会存在相同的对象元素（不知为什么），所以进行了一个
+                              ] if(cbobj.length == len){
+                var tempobj = [];        // 解析字符串 后回调该对象数组
+                 for(var i = 0; i < len; i++){    // 遍历所有的文件进行字符串解析
+                    var obj = JSON.parse(cbobj[i])
+                     tempobj[i] = obj;                }
+                callback(tempobj);
+            }
+        }
+        }     function delsingle(path){
+            retValue(path, function(filepro){
+                callback(filepro);
+            });
+        }        function retValue(path, cb){
+            plus.io.requestFileSystem(plus.io.PRIVATE_WWW, function(fs){
+                fs.root.getFile(path, {create: true}, function(fileEntry){
+                    fileEntry.file(function(file){
+                        console.log("原始文件大小：" + file.size / 1024 +"KB   filename:"+file.name);
+                        origin(file.size, file.name);
+                    })
+                })
+            })
+            function origin(filesize, filename){
+                plus.io.resolveLocalFileSystemURL(path, function(entry) {
+                    var local = entry.toLocalURL();
+                    _this.dealImage(local, del, function(base) {
+                        fileObj.now.base64Char = base;
+                        fileObj.now.base64Length = base.length;
+                        fileObj.now.fileSize = (base.length / 1024).toFixed(2) + "KB";
+                        fileObj.origin.fileSize = (filesize / 1024).toFixed(2) + "KB";
+                        fileObj.origin.filePath = local;
+                        fileObj.fileName = filename;
+                        cb(fileObj);
+                    })
+                })
+            }
+        }
+        }
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

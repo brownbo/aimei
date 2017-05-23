@@ -1,0 +1,148 @@
+.btn{
+    margin-right: 10px;
+}
+#nextpage{
+    float: right;
+}
+#pastpage{
+    float: right;
+}
+
+#qnextpage{
+    float: right;
+}
+#qpastpage{
+    float: right;
+}
+.eqinput{
+    border-radius:4px;
+    height: 30px;
+    width: 100%;
+    background-color: lightgray;
+}
+.eqspan{
+    font-size: 25px;
+    width: 300px;
+    display: block;
+    float: left;
+}
+.is{
+    width: 70px;
+    height: 25px;
+    font-size: 15px;
+}
+.eqspan0{
+
+    font-size: 25px;
+}
+.eqerea{
+    border-radius:4px;
+    height: 100px;
+    width: 460px;
+}
+/*#submit{
+    float: right;
+}*/
+
+/*.col-sm-4{
+    width: 300px;
+}*/
+.select{
+    float: left;
+
+
+}
+
+.selectitems{
+    width: 80px;
+    height: 35px;
+
+
+}
+
+
+#divall{
+    /*position: fixed;*/
+
+    height:35px;
+    z-index:5;
+    line-height: 35px;
+    margin-left: 5px;
+    text-align: center;
+    vertical-align:middle;
+}
+#divall .list-group{
+    line-height: 35px;
+    height:35px;
+}
+.imgs{
+    height: 100px;
+    width: 172px;
+
+}
+#ProductDescription{
+    width: 175px;
+}
+#unitPrice{
+    width: 175px;
+}
+.test{
+    float: left;
+    margin: 20px;
+}
+.allimgs{}
+.manuli{
+    margin-left: 40px;
+}
+
+.current{
+  background-color:   #428bca;
+
+}
+.current a:hover{
+    background-color: #428bca!important;
+    /*color: #eeeeee;
+*/
+
+}
+.current a{
+    background-color: #428bca!important;
+    color: #eeeeee!important;
+}
+
+.typeName{
+
+}
+
+/*公用查询菜单*/
+.searchMenu{
+    height: 30px;width: auto;background-color: #eee;
+    margin-top: 20px;
+    margin-bottom: 5px;
+}
+.searchUl{
+    height: 30px;
+    padding-left: 0px;
+}
+.searchLi{
+    float: left;
+    list-style: none;
+    margin: 5px;
+    height: 20px;
+
+}
+.searchLi a{
+    color: #6d6d6d;
+}
+
+
+/*.searchLi_C a{
+    color: rgb(66, 139, 202);
+}*/
+.searchLi_R{
+    height: 20px;
+    float: right;
+    list-style: none;
+    margin: 5px;
+}
+/*公用查询菜单*/

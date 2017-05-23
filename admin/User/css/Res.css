@@ -1,0 +1,34 @@
+#resList div{
+overflow-y: scroll;	
+height: 100px;
+}
+#resList td{
+	vertical-align: middle;
+}
+#ProList td{
+	vertical-align: middle;
+}
+#userList td{
+	vertical-align: middle;
+}
+#userList td{
+	vertical-align: middle;
+}
+.fl{
+	float: left;
+}
+.protypeSelect{
+	padding:0px 5px 0px 100px;
+}
+.sel{
+	height: 34px;
+}
+.select_width{
+	width:155px;
+	
+}
+.user_input{
+	height:  36px;
+	margin-left:100px ;
+	margin-right: 5px;
+}

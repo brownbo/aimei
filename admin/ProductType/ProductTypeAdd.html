@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="favicon.ico">
+
+    <title>Stare Create</title>
+
+    <!-- Bootstrap core CSS -->
+
+    <link href="../public/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../public/css/dashboard.css" rel="stylesheet">
+    <link href="../public/css/Product.css" rel="stylesheet">
+
+
+    <link href="../public/css/main.css" rel="stylesheet">
+    <script src="../public/js/jquery-1.11.1.min.js"></script>
+    <script src="https://cdn1.lncld.net/static/js/av-mini-0.6.1.js"></script>
+    <script src="../public/js/leancloud.js"></script>
+    <script src="../public/js/main.js"></script>
+    <script src="../public/js/ProductTypeAdd.js"></script>
+
+    <!-- Just for debugging purposes. Don't actually copy this line! -->
+    <!--[if lt IE 9]>
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <![endif]-->
+</head>
+
+<body>
+
+<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Stare Crate</a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul id="banner" class="nav navbar-nav navbar-right">
+                <!--<li><a href="#">Dashboard</a></li>
+                <li><a href="#">Settings</a></li>
+                <li><a href="#">Profile</a></li>
+                <li><a href="#">Help</a></li>-->
+            </ul>
+            <form class="navbar-form navbar-right">
+              <!--  <input type="text" class="form-control" placeholder="Search...">-->
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+            <ul id="menuList"  class="nav nav-sidebar">
+                <!--<li class="active"><a href="javascript:getList()">产品管理</a></li>
+                <div id="menu" style="display: none">
+                    <ul class="nav nav-sidebar">
+                        <li class="manuli"><a href="../ProductManage/ProductType/ProductTypeList.html">产品类别管理</a></li>
+                        <li class="manuli"><a href="../ProductManage/Product/ProductList.html">产品管理</a></li>
+                        <li class="manuli"><a href="../ProductManage/ProductPrice/ProductPriceList.html">产品价格管理</a></li>
+                    </ul>
+                </div>-->
+
+            </ul>
+
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+
+
+
+
+            <h2 class="sub-header">产品类别新增/编辑</h2>
+            <div class="table-responsive">
+
+                <table id="index" class="table table-striped">
+                    <tr><th>类别名称</th><td><input id="typeName" type="text" ></td>
+                        <th>类别ID</th><td><input id="typeID" type="text" ></td>
+                    </tr>
+                    <tr><th>菜单级别</th><td><select id="level" onchange="BindLevel(this)"><option>一级菜单</option><option>二级菜单</option></select></td>
+                        <th>父级菜单</th><td><select id="parent" ><option>无</option></select></td>
+                    </tr>
+                    <tr><th>类别编号</th><td><input id="orderNumber" type="text" ></td>
+                        <th>是否可用</th><td><select id="enabled" ><option>启用</option><option>停用</option></select></td>
+                    </tr>
+
+                    <!--<tr>
+                        <th><a href="#">允许的业态</a></th><td colspan="4"><div id="storeType" ><p>1</p><p>2</p></div></td>
+
+                    </tr>-->
+                </table>
+                <input type="button" class="btn btn-primary" value="提交" onclick="beforeSaveType()">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+
+</body>
+</html>
